@@ -1,0 +1,22 @@
+public class Solution {
+
+    static int summation=0;
+    static int total;
+	public static int sum(int input[]) {
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+	 	 * Taking input and printing output is handled automatically.
+		*/
+        int si=0;
+         int res=sum(input,si);
+        return res;
+	}
+    public static int sum(int[] arr, int si)
+    {
+        if(si==arr.length-1)
+            return arr[arr.length-1];
+        return  arr[si]+sum(arr,si+1);
+    }
+}
