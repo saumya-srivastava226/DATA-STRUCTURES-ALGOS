@@ -1,0 +1,19 @@
+
+public class Solution {
+			public static int firstIndex(int input[],int x)
+        {
+        return firstIndex(input,x,0);
+       }
+    public static int firstIndex(int[] arr,int x,int si)
+    {
+        if(si==arr.length)
+            return -1;
+        if(arr[si]==x)
+            return si;
+        else
+            return firstIndex(arr,x,si+1);
+    }
+        
+            
+}
+	
