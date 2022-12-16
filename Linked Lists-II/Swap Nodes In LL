@@ -1,0 +1,60 @@
+public class Solution {
+
+	public static LinkedListNode<Integer> swapNodes(LinkedListNode<Integer> head, int x, int y) {
+		//Your code goes here
+        if(head==null||head.next==null)
+            return head;
+        
+        if (x == y)
+            return head;
+ 		LinkedListNode<Integer> newHead=head;
+        
+        LinkedListNode<Integer> prevX = null, currX = head;
+        int count=0;
+        while (currX != null) {
+            if(count==x){
+                prevX = currX;
+                break;
+            }
+            count++;
+            currX = currX.next;
+        }
+ 
+        
+        LinkedListNode<Integer> prevY = null, currY = head;
+        count=0;
+        while (currY != null ) {
+            if(count==y){
+                prevY = currY;
+                break;
+            }
+            count++;
+            currY = currY.next;
+        }
+ 
+        /*
+        if (currX == null || currY == null)
+            return newHead;
+ 		
+        
+        if (prevX != null)
+            prevX.next = currY;
+        else 
+            head = currY;
+ 
+        
+        if (prevY != null)
+            prevY.next = currX;
+        else 
+            head = currX;
+ 
+        */
+        int temp = currX.data;
+        currX.data = currY.data;
+        currY.data = temp;
+        
+        return  head;
+    
+	}
+
+}
