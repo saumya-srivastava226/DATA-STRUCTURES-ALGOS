@@ -1,0 +1,21 @@
+
+public class solution {
+
+	public static boolean isStringPalindrome(String input) {
+		// Write your code here
+       
+        
+        return isStringPalindrome(input,0,input.length()-1);
+        
+
+	}
+    public static boolean isStringPalindrome(String input, int i,int j)
+    {
+        if(i>j)
+            return true;
+        if(input.charAt(i)!=input.charAt(j))
+            return false;
+        boolean result=isStringPalindrome(input,i+1,j-1);
+        	return result;
+    }
+}
