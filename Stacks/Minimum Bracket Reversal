@@ -1,0 +1,47 @@
+import java.util.Stack;
+import java.lang.Math;
+public class Solution {
+
+	public static int countBracketReversals(String input) {
+		//Your code goes here
+        int countOpen=0;
+        int countClose=0;
+        char[] arr=input.toCharArray();
+        Stack<Character> st=new Stack<Character>();
+        if(arr.length%2!=0)
+            return -1;
+        else
+        {
+            for(int i=0;i<arr.length;i++)
+            {
+                if(arr[i]=='{')
+                {
+                    st.push(arr[i]);
+                    countOpen++;
+                }
+                else if(arr[i]=='}'&&(!st.isEmpty())&&st.peek()=='{')
+                {
+                    st.pop();
+                    countOpen--;
+                }
+                else
+                    countClose++;
+                    
+            }
+            if(countOpen%2!=0)
+                countOpen=(countOpen/2)+1;
+            else
+                countOpen=countOpen/2;
+            
+            if(countClose%2!=0)
+                countClose=(countClose/2)+1;
+            else
+                countClose=countClose/2;
+            
+            return countOpen+countClose;
+        }
+        
+        
+    }
+
+}
