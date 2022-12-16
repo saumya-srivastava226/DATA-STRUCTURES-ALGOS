@@ -1,0 +1,43 @@
+import java.util.Stack;
+public class Solution {
+
+    public static boolean isBalanced(String expression) {
+        //Your code goes here
+        Stack<Character> stack=new Stack<Character>();
+        if(expression.charAt(0)==']'||expression.charAt(0)=='}'||expression.charAt(0)==')')
+            return false;
+        for(int i=0;i<expression.length();i++)
+        {
+            if(expression.charAt(i)=='['||expression.charAt(i)=='{'||expression.charAt(i)=='(')
+            { stack.push(expression.charAt(i));
+            continue;
+            }
+             if(stack.isEmpty()==true)
+                 return false;
+            
+            char check;
+            switch(expression.charAt(i))
+            {
+                case ')' : check=stack.pop();
+                    		if (check == '{' || check == '[')
+                    return false;
+                break;
+                    case '}' : check=stack.pop();
+                    		if (check == '(' || check == '[')
+                    return false;
+                break;
+                     case ']' : check=stack.pop();
+                    		if (check == '(' || check == '{')
+                    return false;
+                break;
+            }
+           
+            
+        }
+        
+        
+        if(stack.isEmpty()==true)
+            return true;
+        return false;
+    }
+}
