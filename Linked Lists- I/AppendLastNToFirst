@@ -1,0 +1,31 @@
+public class Solution {
+
+	public static LinkedListNode<Integer> appendLastNToFirst(LinkedListNode<Integer> head, int n) {
+	
+        if(head==null||head.next==null||n==0)
+            return head;
+        int k=1;
+        LinkedListNode<Integer> ptr=head;
+        while(ptr.next!=null)
+        {
+            k++;
+            ptr=ptr.next;
+            
+        }
+        ptr.next=head;// at this point ll has become circular
+        for(int i=1;i<=k-n;i++)
+        {
+            ptr=ptr.next;
+        }
+        head=ptr.next;
+        ptr.next=null;
+        return head;
+        
+        
+        
+        
+        
+		
+	}
+}
+
