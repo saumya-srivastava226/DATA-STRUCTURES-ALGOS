@@ -1,0 +1,54 @@
+public class Solution {
+
+    public static BinaryTreeNode<Integer> buildTree(int[] pre,int[] in, int siPre, int eiPre, int siIn, int eiIn)
+    {
+        if(siPre>eiPre)
+            return null;
+        int rootData=pre[siPre];
+        
+        BinaryTreeNode<Integer> root=new BinaryTreeNode<Integer>(rootData);
+        int rootIndex=-1;
+        for(int i=siIn;i<=eiIn;i++)
+        {
+            if(in[i]==rootData)
+            {
+                rootIndex=i;
+                break;
+            }
+        }
+        
+        
+        int siLeftPre=siPre+1;
+        int eiLeftPre;
+        int siLeftIn=siIn;
+        int eiLeftIn=rootIndex-1;
+        int siRightPre;
+        int eiRightPre=eiPre;
+        int siRightIn=rootIndex+1;
+        int eiRightIn=eiIn;
+        
+        int leftsubtreelength=eiLeftIn-siLeftIn+1;
+        eiLeftPre=siLeftPre+leftsubtreelength-1;
+        siRightPre=eiLeftPre+1;
+        
+        BinaryTreeNode<Integer> left=buildTree(pre,in,siLeftPre,eiLeftPre,siLeftIn,eiLeftIn);
+        BinaryTreeNode<Integer> right=buildTree(pre,in,siRightPre,eiRightPre,siRightIn,eiRightIn);
+        root.left=left;
+        root.right=right;
+        return root;
+        
+        
+        
+        
+        
+        
+        
+    }
+	public static BinaryTreeNode<Integer> buildTree(int[] preOrder, int[] inOrder) {
+		//Your code goes here
+        
+        BinaryTreeNode<Integer> root=buildTree(preOrder,inOrder,0,preOrder.length-1,0,inOrder.length-1);
+        return root;
+	}
+
+}
