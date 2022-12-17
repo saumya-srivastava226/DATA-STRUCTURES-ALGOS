@@ -1,0 +1,19 @@
+public class Solution {
+
+	
+	public static int getHeight(TreeNode<Integer> root){
+		
+        if(root==null)
+            return 0;
+        int ht=0;
+        for(TreeNode<Integer> node:root.children)
+        {
+            int ch=getHeight(node);
+            ht=Math.max(ch,ht);
+        }
+        ht+=1;
+        return ht;
+        
+	}
+
+}
