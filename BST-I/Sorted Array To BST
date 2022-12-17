@@ -1,0 +1,26 @@
+public class Solution {
+
+
+	
+		public static BinaryTreeNode<Integer> SortedArrayToBST(int[] arr, int n){
+            
+            BinaryTreeNode<Integer> root=SortedArrayToBST(arr,n, 0, n-1);
+            return root;
+			
+		}
+    	public static BinaryTreeNode<Integer> SortedArrayToBST(int[] arr,int n ,int si, int ei)
+        {
+            
+            if(n==0)
+                return null;
+            if(si>ei)
+                return null;
+            int mid=(si+ei)/2;
+            int rootData=arr[mid];
+            BinaryTreeNode<Integer> root=new BinaryTreeNode<Integer>(rootData);
+            root.left=SortedArrayToBST(arr,n,si,mid-1);
+            root.right=SortedArrayToBST(arr,n,mid+1,ei);
+            
+            return root;
+        }
+	}
