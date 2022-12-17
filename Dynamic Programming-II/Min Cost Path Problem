@@ -1,0 +1,34 @@
+public class Solution {
+
+	public static int minCostPath(int[][] input) {
+		//Your code goes here
+       
+        return minCostHelper(input,0,0);
+        
+	}
+    public static int minCostHelper(int[][] input, int i, int j)
+    {
+        int m=input.length;
+        int n=input[0].length;
+        
+        if(i==m-1&&j==n-1)
+            return input[i][j];
+        
+        if(i>=m||j>=n)
+            return Integer.MAX_VALUE;
+        
+        
+             int   ans1=minCostHelper(input,i+1,j);
+                
+              int  ans2=minCostHelper(input,i,j+1);
+              int  ans3=minCostHelper(input,i+1,j+1);
+                
+                int myans=input[i][j]+Math.min(ans1,Math.min(ans2,ans3));
+                
+                
+                
+                
+           
+        return myans;
+    }
+}
