@@ -1,0 +1,35 @@
+public static LinkedListNode<Integer> constructLinkedList(BinaryTreeNode<Integer> root) {
+
+        	if(root==null)
+                return null;
+        	
+              LinkedListNode<Integer> node=new LinkedListNode<Integer>(root.data);
+        	
+                LinkedListNode<Integer> lefthead=constructLinkedList(root.left);
+                LinkedListNode<Integer> lefttail=lefthead;
+        	  
+        		if(lefthead!=null)
+                {
+                     while(lefttail.next!=null)
+                        {
+                                   lefttail=lefttail.next;
+                        }
+        	              lefttail.next=node;
+                }    
+                   
+            
+        	 LinkedListNode<Integer> righthead=constructLinkedList(root.right);
+            
+        
+        	node.next=righthead;
+        	
+        if(lefthead!=null)
+            return lefthead;
+        return node;
+        	
+        	
+        
+       
+        
+        	
+	}
