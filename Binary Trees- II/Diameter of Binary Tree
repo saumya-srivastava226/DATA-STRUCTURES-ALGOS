@@ -1,0 +1,27 @@
+import java.lang.Math;
+public class Solution {
+
+    public static int height(BinaryTreeNode<Integer> root)
+    {
+        if(root==null)
+            return 0;
+        int x=height(root.left);
+        int y=height(root.right);
+        
+        if(x>y)
+            return x+1;
+        return y+1;
+    }
+	public static int diameterOfBinaryTree(BinaryTreeNode<Integer> root){
+		//Your code goes here
+        
+        if (root==null)
+            return 0;
+        int ld=diameterOfBinaryTree(root.left);
+        int rd=diameterOfBinaryTree(root.right);
+        int heightTotal=1+height(root.left)+height(root.right);
+        
+        return Math.max(heightTotal,Math.max(ld,rd));
+	}
+	
+}
