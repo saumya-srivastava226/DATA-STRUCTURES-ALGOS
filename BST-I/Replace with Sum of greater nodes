@@ -1,0 +1,16 @@
+public class Solution {
+
+
+	public static int sum=0;
+	public static void replaceWithLargerNodesSum(BinaryTreeNode<Integer> root) {
+		// Write your code here
+        if(root==null)
+            return;
+        replaceWithLargerNodesSum(root.right);
+        int temp=root.data;
+        root.data=root.data+sum;
+        sum=sum+temp;
+        replaceWithLargerNodesSum(root.left);
+        
+    }
+}
