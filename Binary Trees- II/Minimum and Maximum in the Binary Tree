@@ -1,0 +1,26 @@
+public class Solution {
+
+     static int largest=Integer.MIN_VALUE;
+     static int smallest=Integer.MAX_VALUE;
+	public static Pair<Integer, Integer> getMinAndMax(BinaryTreeNode<Integer> root) {
+		//Your code goes here
+        
+        if(root==null)
+        {  
+            Pair ans=new Pair(-1,-1);
+            return ans;
+            
+        } 
+        if(largest<root.data)
+            largest=root.data;
+        if(root.data<smallest)
+            smallest=root.data;
+        getMinAndMax(root.left);
+        getMinAndMax(root.right);
+        Pair ans=new Pair(smallest,largest);
+        return ans;
+        
+        
+	}
+	
+}
