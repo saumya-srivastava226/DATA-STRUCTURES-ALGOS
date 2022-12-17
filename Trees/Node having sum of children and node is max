@@ -1,0 +1,51 @@
+public class Solution {
+
+
+	public static int sum=0;
+	
+	public static TreeNode<Integer> maxSumNode(TreeNode<Integer> root){
+		// Write your code here
+        
+         TreeNode<Integer> ans = root;
+        if(root==null)
+            return null;
+        
+        int rd=root.data;
+        for(int i=0;i<root.children.size();i++)
+        {
+            rd = rd+root.children.get(i).data;
+        }
+        
+         for(int i=0;i<root.children.size();i++){
+            TreeNode<Integer> x = maxSumNode(root.children.get(i));
+            int xsum = x.data;
+            for(int j=0;j<x.children.size();j++){
+                xsum = xsum + x.children.get(j).data;
+            }
+            
+//              if(sum<rd+root.children.get(i).data)
+//              {
+//                  sum=rd;
+//                  sum=root.children.get(i).data+sum;
+//              }
+                  
+//         }
+             
+             if(xsum>rd){
+                ans = x;
+                rd=xsum;
+            }
+         }
+//         for(int i=0;i<root.children.size();i++)
+//         {
+//              maxSumNode(root.children.get(i));
+            
+//         }
+//         return root;
+        
+        return ans;
+       
+	}
+	
+		
+}
