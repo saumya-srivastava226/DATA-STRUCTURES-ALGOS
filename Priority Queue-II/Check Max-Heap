@@ -1,0 +1,26 @@
+public class Solution {
+
+	public static boolean checkMaxHeap(int arr[]) {
+		/*
+		 * Your class should be named Solution Don't write main(). Don't read input, it
+		 * is passed as function argument. Return output and don't print it. Taking
+		 * input and printing output is handled automatically.
+		 */
+           // node
+        int n=arr.length;
+        for (int i = 0; i <= (n - 2) / 2; i++) {
+            // If left child is greater, return false
+            if (arr[2 * i + 1] > arr[i]) {
+                return false;
+            }
+ 
+            // If right child is greater, return false
+            if (2 * i + 2 < n && arr[2 * i + 2] > arr[i]) {
+                return false;
+            }
+        }
+        return true;
+       
+	}
+    
+}
