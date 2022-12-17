@@ -1,0 +1,17 @@
+public class Solution {
+
+	
+	static int sum=0;
+	static int totalsum=0;
+	public static int sumOfAllNode(TreeNode<Integer> root){
+			if(root==null)
+                return 0;
+        	sum=sum+root.data;
+        for(int i=0;i<root.children.size();i++)
+        {
+            sumOfAllNode(root.children.get(i));
+        }
+        return sum;
+          
+	}
+}
