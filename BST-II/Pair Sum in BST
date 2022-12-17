@@ -1,0 +1,42 @@
+public class Solution {
+	
+	
+	public static void printNodesSumToS(BinaryTreeNode<Integer> root, int s) {
+		// Write your code here
+       printNodesSumToS(root,root,s);
+        
+        
+	}
+    public static boolean isPresent(BinaryTreeNode<Integer> root, int ele)
+    {
+        if(root==null)
+            return false;
+        else if(root.data==ele)
+            return true;
+        else if(root.data>ele)
+            return isPresent(root.left,ele);
+        else if(root.data<ele)
+            return isPresent(root.right,ele);
+        else
+            return false;
+        
+    }
+    public static void printNodesSumToS(BinaryTreeNode<Integer> root, BinaryTreeNode<Integer> node, int s)
+    {
+        if(node==null)
+            return;
+        
+       // printNodesSumToS(root,node.left,s);
+        int comp=s-node.data;
+        if(node.data<comp)
+        {      
+           if(isPresent(root, comp)==true)
+           {
+            System.out.println(node.data+" "+comp);
+            }
+        }
+        printNodesSumToS(root,node.left,s);
+        printNodesSumToS(root,node.right,s);
+    }
+
+}
