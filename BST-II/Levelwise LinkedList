@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class Solution {
+	
+	public static ArrayList<LinkedListNode<Integer>> constructLinkedListForEachLevel(BinaryTreeNode<Integer> root){
+		// Write your code here
+        
+        if(root==null)
+            return null;
+        
+        Queue<BinaryTreeNode<Integer>> q=new LinkedList<BinaryTreeNode<Integer>>();
+        q.add(root);
+        ArrayList<LinkedListNode<Integer>> res=new ArrayList<LinkedListNode<Integer>>();
+        while(!q.isEmpty())
+        {
+           
+                
+            LinkedListNode<Integer> head=new LinkedListNode<Integer>(-1);
+            LinkedListNode<Integer> temp=new LinkedListNode<Integer>(-1);
+            int size=q.size();
+            for(int i=0;i<size;i++)
+            {
+                BinaryTreeNode<Integer> node=q.poll();
+                if(node.left!=null)
+                    q.add(node.left);
+                if(node.right!=null)
+                    q.add(node.right);
+                if(i==0)
+                {
+                    head.data=node.data;
+                    temp=head;
+                }
+                else
+                {
+                    LinkedListNode<Integer> newNode=new LinkedListNode<Integer>(node.data);
+                    temp.next=newNode;
+                    temp=newNode;
+                }
+            }
+            res.add(head);
+            
+            
+        }
+        
+        return res;
+        
+	}
+
+}
