@@ -1,0 +1,58 @@
+import java.util.*;
+import java.util.HashMap;
+
+public class Solution {
+	public static int PairSum(int[] input, int size) {
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+	 	 * Taking input and printing output is handled automatically.
+        */
+        int count=0;
+        HashMap<Integer, Integer> map=new HashMap<>();
+        for(int i=0;i<size;i++)
+        {
+            if(map.containsKey(input[i]))
+            {
+                int freq=map.get(input[i]);
+                freq++;
+                map.put(input[i],freq);
+            }
+            else
+            {
+                map.put(input[i],1);
+            }
+        }
+        
+        
+        for(int i=0;i<size;i++)
+        {
+            
+            // if(map.containsKey(input[i]))
+            // {
+                // int freq=map.get(input[i]);
+                // if(freq==0)
+                //     map.remove(input[i]);
+                // else   
+                // {
+                //     map.put(input[i],freq);
+                // }
+                if(map.containsKey(-input[i]) && map.get(input[i]) != 0){
+                if(input[i] == -input[i]){
+                    int m = map.get(input[i]);
+                    count += (m*(m-1))/2;
+                    map.put(input[i], 0);
+                    continue;
+                }
+                int m1 = map.get(input[i]);
+                int m2 = map.get(-input[i]);
+                count += (m1*m2);
+                map.put(input[i], 0);
+                map.put(-input[i], 0);
+            }
+            // }
+        }
+        return count;
+	}
+}
