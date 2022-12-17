@@ -1,0 +1,20 @@
+public class Solution {
+    
+   
+
+	public static void changeToDepthTree(BinaryTreeNode<Integer> root) {
+	    //Your code goes here
+        
+        changeToDepthTree(root,0);
+        
+	}
+	public static void changeToDepthTree(BinaryTreeNode<Integer> root, int level)
+    {
+        if(root==null)
+            return;
+        root.data=level;
+        
+        changeToDepthTree(root.left,level+1);
+        changeToDepthTree(root.right,level+1);
+    }
+}
