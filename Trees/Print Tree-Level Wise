@@ -1,0 +1,40 @@
+import java.util.LinkedList;
+import java.util.Queue;
+public class Solution {
+
+	
+	public static void printLevelWise(TreeNode<Integer> root){
+		
+        Queue<TreeNode<Integer>> q=new LinkedList<TreeNode<Integer>>();
+        q.add(root);
+        q.add(null);// This denotes we are going to the next level That we have completed the first level//yes
+        while(!q.isEmpty())
+        {
+            TreeNode<Integer> temp=q.poll();
+           // if(temp!=null)
+             //      System.out.print(temp.data+" ");
+            if(temp==null)
+            {
+                if(q.isEmpty())
+                    break;
+                System.out.println();
+                q.add(null);
+            }
+            else
+            {
+                System.out.print(temp.data+" ");
+                for(int i=0;i<temp.children.size();i++)
+            {
+                q.add(temp.children.get(i));
+            }
+           
+            }
+            
+           
+            
+            
+        }
+
+	}
+		
+}
